@@ -12,7 +12,7 @@ function AddTripModal({ setIsModal }: AddTripModalType) {
   };
   return (
     <div className="fixed inset-0 bg-black/20 flex justify-center items-center">
-      <div className="bg-white w-60 h-50 rounded-2xl p-3">
+      <div className="bg-white w-60 rounded-2xl p-3">
         <div className="flex flex-col gap-1">
           <InputText text="TITLE" />
           <InputText text="LOCATION" />

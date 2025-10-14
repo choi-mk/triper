@@ -9,7 +9,7 @@ interface TripDetailCardType {
 function TripDetailCard({ title, tripId }: TripDetailCardType) {
   return (
     <Link href={`${tripId}/${title}`}>
-      <div>{title}</div>
+      <div className="bg-primary-300">{title}</div>
     </Link>
   );
 }
