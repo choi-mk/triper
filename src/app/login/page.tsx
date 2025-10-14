@@ -5,8 +5,8 @@ import React from "react";
 function LoginPage() {
   return (
     <div className="flex justify-center items-center">
-      <div className="my-15 flex flex-col gap-2 border border-primary-100 rounded-xl p-3">
-        <h1 className="text-primary-100 font-bold flex justify-center text-2xl font-bungee">
+      <div className="my-15 flex flex-col gap-2 border-2 border-primary-50 rounded-xl p-3">
+        <h1 className="text-primary-50 font-bold flex justify-center text-2xl font-bungee">
           Triper
         </h1>
 
@@ -16,6 +16,7 @@ function LoginPage() {
           <Button text="LOGIN" />
         </form>
       </div>
+      {/* 하단에 디자인 추가 */}
     </div>
   );
 }

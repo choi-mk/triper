@@ -14,7 +14,7 @@ function Button({ text, onClick, isYes = true, width = "w-full" }: ButtonType) {
         isYes
           ? "text-white bg-primary-100"
           : "text-primary-100 border-[1.3px] border-primary-100 bg-white"
-      } px-2 py-2 rounded-lg text-sm h-8 flex justify-center items-center ${width}`}
+      } px-2 py-2 rounded-lg text-sm h-8 flex justify-center items-center font-bungee ${width}`}
     >
       {text}
     </button>

@@ -1,4 +1,5 @@
 import { TripType } from "@/types/TripType";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -13,7 +14,15 @@ function TripCard({ trip }: TripCardType) {
         <div className="bg-black h-15 w-full"></div>
         <div>
           <p>{trip.title}</p>
-          <p className="font-bold text-sm text-primary-50">{trip.location}</p>
+          <div className="flex">
+            <Image
+              alt="location"
+              src="/assets/icons/icon_location.png"
+              width={17}
+              height={4}
+            />
+            <p className="font-bold text-sm text-primary-50">{trip.location}</p>
+          </div>
           <p className="text-gray-400 text-[10px]">{trip.date}</p>
         </div>
       </div>
