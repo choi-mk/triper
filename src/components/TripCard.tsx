@@ -14,12 +14,13 @@ function TripCard({ trip }: TripCardType) {
         <div className="bg-black h-15 w-full"></div>
         <div>
           <p>{trip.title}</p>
-          <div className="flex">
+          <div className="flex items-center">
             <Image
               alt="location"
               src="/assets/icons/icon_location.png"
               width={17}
               height={4}
+              className="w-3 h-3"
             />
             <p className="font-bold text-sm text-primary-50">{trip.location}</p>
           </div>
