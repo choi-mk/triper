@@ -19,9 +19,9 @@ function TripDetailPage() {
   return (
     <div className="flex flex-col items-center">
       <div className="bg-black h-30 w-full"></div>
-      <div className="px-2 w-full">
-        <div className="">
-          <h1>{trip.title}</h1>
+      <div className="px-17 w-full flex items-center flex-col gap-5">
+        <div className="w-full mt-5">
+          <h1 className="font-bold">{trip.title}</h1>
           <div className="flex gap-3 text-sm items-center">
             <p>{trip.location}</p>
             <div className="border-l border-gray-300 h-3"></div>
@@ -50,8 +50,9 @@ function TripDetailPage() {
             img="/assets/images/img_review.png"
           />
         </div>
+        <Button text="Delete" width="w-20" onClick={onClickDelete} />
       </div>
-      <Button text="Delete" width="w-20" onClick={onClickDelete} />
+
       {isModal && <DeleteTripModal setIsModal={setIsModal} />}
     </div>
   );

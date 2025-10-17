@@ -13,7 +13,10 @@ function InputText({
 }: InputTextType) {
   return (
     <div className="flex flex-col w-full">
-      <label htmlFor="email" className="text-[10px] text-primary-100 font-bold">
+      <label
+        htmlFor="email"
+        className="text-[10px] text-primary-100 font-bungee"
+      >
         {text}
       </label>
       <input
