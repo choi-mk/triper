@@ -1,11 +1,14 @@
+"use client";
 import Button from "@/components/Button";
 import InputText from "@/components/InputText";
-import React from "react";
+import Link from "next/link";
+import React, { useState } from "react";
 
 function LoginPage() {
+  const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   return (
     <div className="flex justify-center items-center">
-      <div className="my-15 flex flex-col gap-2 border-2 border-primary-50 rounded-xl p-3 w-50">
+      <div className="my-15 flex flex-col gap-2 border-2 border-primary-50 rounded-xl p-3 w-60">
         <h1 className="text-primary-50 font-bold flex justify-center text-2xl font-bungee">
           Triper
         </h1>
@@ -15,12 +18,22 @@ function LoginPage() {
           <InputText
             text="PASSWORD"
             isPassword={true}
+            isShowPassword={isShowPassword}
+            setIsShowPassword={setIsShowPassword}
             placeholder="비밀번호를 입력해주세요"
           />
           <Button text="LOGIN" />
         </form>
+        <div className="text-[8px] flex justify-center gap-1">
+          <p>계정이 없으신가요?</p>
+          <Link
+            href="/signup"
+            className="text-primary-50 cursor-pointer underline font-bold"
+          >
+            회원가입
+          </Link>
+        </div>
       </div>
-      {/* 하단에 디자인 추가 */}
     </div>
   );
 }
