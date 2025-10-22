@@ -36,7 +36,7 @@ function InputText({
       {isPassword &&
         (isShowPassword ? (
           <Image
-            src="/assets/icons/icon_eye_close.png"
+            src="/assets/icons/ic_eye_close.png"
             width={20}
             height={20}
             alt="unshow password"
@@ -45,7 +45,7 @@ function InputText({
           />
         ) : (
           <Image
-            src="/assets/icons/icon_eye_open.png"
+            src="/assets/icons/ic_eye_open.png"
             width={20}
             height={20}
             alt="show password"

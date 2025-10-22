@@ -17,7 +17,7 @@ function TripCard({ trip }: TripCardType) {
           <div className="flex items-center">
             <Image
               alt="location"
-              src="/assets/icons/icon_location.png"
+              src="/assets/icons/ic_location.png"
               width={17}
               height={4}
               className="w-3 h-3"

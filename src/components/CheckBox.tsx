@@ -19,7 +19,7 @@ function CheckBox({ isChecked }: CheckBoxType) {
     >
       {isChecked && (
         <Image
-          src="/assets/icons/icon_check.png"
+          src="/assets/icons/ic_check.png"
           width={9}
           height={9}
           alt="check"

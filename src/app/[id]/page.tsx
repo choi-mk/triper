@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import DeleteTripModal from "@/components/DeleteTripModal";
+import Toast from "@/components/Toast";
 import TripDetailCard from "@/components/TripDetailCard";
 import { TripType } from "@/types/TripType";
 import React, { useState } from "react";
@@ -52,7 +53,7 @@ function TripDetailPage() {
         </div>
         <Button text="Delete" width="w-20" onClick={onClickDelete} />
       </div>
-
+      <Toast text="여행이 삭제되었습니다" />
       {isModal && <DeleteTripModal setIsModal={setIsModal} />}
     </div>
   );
