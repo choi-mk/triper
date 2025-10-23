@@ -7,14 +7,18 @@ interface InputTextType {
   placeholder?: string;
   isShowPassword?: boolean;
   setIsShowPassword?: (v: boolean) => void;
+  value?: string;
+  setValue: (value: string) => void;
 }
 
 function InputText({
   text,
   isPassword = false,
   placeholder = "",
-  isShowPassword,
+  isShowPassword = true,
   setIsShowPassword = () => {},
+  value,
+  setValue,
 }: InputTextType) {
   const handleChangeShow = (value: boolean) => {
     setIsShowPassword(value);
@@ -29,9 +33,11 @@ function InputText({
       </label>
       <input
         id={text}
-        type={isShowPassword ? "" : "password"}
+        type={isShowPassword ? "text" : "password"}
         className="border border-primary-200 rounded-sm py-[6px] pl-[6px] text-[10px]"
         placeholder={placeholder}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       ></input>
       {isPassword &&
         (isShowPassword ? (

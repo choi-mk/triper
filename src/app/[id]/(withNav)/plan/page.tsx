@@ -1,5 +1,4 @@
 "use client";
-import Calendar from "@/components/Callender";
 import DropDown from "@/components/DropDown";
 import TabTable from "@/components/TabTable";
 import React, { useState } from "react";
@@ -13,7 +12,6 @@ function PlanPage() {
         current={current}
         setCurrent={setCurrent}
       />
-      <Calendar />
       <TabTable categories={["교통", "숙박", "기타"]} />
     </div>
   );

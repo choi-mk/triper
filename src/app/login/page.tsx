@@ -6,6 +6,8 @@ import React, { useState } from "react";
 
 function LoginPage() {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   return (
     <div className="flex justify-center items-center">
       <div className="my-15 flex flex-col gap-2 border-2 border-primary-50 rounded-xl p-3 w-60">
@@ -14,13 +16,20 @@ function LoginPage() {
         </h1>
 
         <form className="flex justify-center flex-col gap-2">
-          <InputText text="EMAIL" placeholder="이메일을 입력해주세요" />
+          <InputText
+            text="EMAIL"
+            placeholder="이메일을 입력해주세요"
+            value={email}
+            setValue={setEmail}
+          />
           <InputText
             text="PASSWORD"
             isPassword={true}
             isShowPassword={isShowPassword}
             setIsShowPassword={setIsShowPassword}
             placeholder="비밀번호를 입력해주세요"
+            value={password}
+            setValue={setPassword}
           />
           <Button text="LOGIN" />
         </form>

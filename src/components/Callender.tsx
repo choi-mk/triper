@@ -3,15 +3,27 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import Button from "./Button";
 
-function Calendar() {
+interface CalendarType {
+  departureDate: string;
+  setDepartureDate: (value: string) => void;
+  arrivalDate: string;
+  setArrivalDate: (value: string) => void;
+  setIsModalOpen: (value: boolean) => void;
+}
+
+function Calendar({
+  departureDate,
+  setDepartureDate,
+  arrivalDate,
+  setArrivalDate,
+  setIsModalOpen,
+}: CalendarType) {
   const [currentDate, setCurrentDate] = useState(dayjs());
   const startOfMonth = currentDate.startOf("month");
   const endOfMonth = currentDate.endOf("month");
   const startDay = startOfMonth.day();
   const daysInMonth = endOfMonth.date();
   const today = dayjs();
-  const [departureDate, setDepartureDate] = useState<string>("");
-  const [arrivalDate, setArrivalDate] = useState<string>("");
 
   const prevMonth = () => setCurrentDate(currentDate.subtract(1, "month"));
   const nextMonth = () => setCurrentDate(currentDate.add(1, "month"));
@@ -20,19 +32,47 @@ function Calendar() {
   for (let i = 0; i < startDay; i++) daysArray.push(null);
   for (let i = 1; i <= daysInMonth; i++) daysArray.push(i);
 
-  const handleChooseTrip = () => {
+  const handleChooseDate = (date: string) => {
+    const chosen = dayjs(date, "YYYY. MM. DD");
+
+    // 아직 아무것도 선택 안 했을 때
     if (departureDate === "" && arrivalDate === "") {
+      setDepartureDate(date);
+      return;
+    }
+
+    // 출발일만 있고 도착일 아직 없을 때
+    if (arrivalDate === "") {
+      const dep = dayjs(departureDate, "YYYY. MM. DD");
+      if (chosen.isBefore(dep, "day")) {
+        // 선택한 날짜가 출발일보다 이전이면 출발일만 변경
+        setDepartureDate(date);
+      } else {
+        // 이후 날짜면 도착일로 설정
+        setArrivalDate(date);
+      }
+      return;
+    }
+
+    // 이미 둘 다 선택되어 있으면 새 출발일로 갱신
+    setDepartureDate(date);
+    setArrivalDate("");
+  };
+
+  const handleConfirmDate = () => {
+    if (departureDate !== "" && arrivalDate !== "") {
+      setIsModalOpen(false);
     }
   };
 
   return (
-    <div className="w-[320px] bg-white rounded-2xl shadow p-4">
+    <div className="w-58 bg-white rounded-2xl shadow p-2 absolute top-12">
       {/* 상단 헤더 */}
-      <div className="flex justify-between items-center mb-3">
+      <div className="flex justify-between items-center">
         <button onClick={prevMonth} className="text-primary-50">
           ◀
         </button>
-        <h2 className="font-bold text-primary-50 font-bungee">
+        <h2 className="font-bold text-primary-50 font-bungee text-sm">
           {currentDate.format("YYYY. MM")}
         </h2>
         <button onClick={nextMonth} className="text-primary-50">
@@ -41,7 +81,7 @@ function Calendar() {
       </div>
 
       {/* 요일 */}
-      <div className="grid grid-cols-7 text-center text-sm font-semibold mb-2 font-bungee">
+      <div className="grid grid-cols-7 text-center text-[10px] font-semibold font-bungee">
         {["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"].map((d) => (
           <div
             key={d}
@@ -53,12 +93,15 @@ function Calendar() {
       </div>
 
       {/* 날짜 */}
-      <div className="grid grid-cols-7 text-center gap-y-2 text-sm">
+      <div className="grid grid-cols-7 text-center text-[10px] font-bold gap-1">
         {daysArray.map((day, idx) =>
           day ? (
             <div
+              onClick={() =>
+                handleChooseDate(currentDate.date(day).format("YYYY. MM. DD"))
+              }
               key={idx}
-              className={`w-8 h-8 rounded-full cursor-pointer hover:bg-primary-400 flex justify-center items-center
+              className={`w-7 h-7 rounded-full cursor-pointer hover:bg-primary-400 flex justify-center items-center
                ${
                  today.isSame(currentDate.date(day), "day")
                    ? "bg-primary-100 text-white" // 오늘 날짜
@@ -74,7 +117,7 @@ function Calendar() {
           )
         )}
       </div>
-      <Button text="COMPLETE" />
+      <Button text="COMPLETE" onClick={handleConfirmDate} />
     </div>
   );
 }

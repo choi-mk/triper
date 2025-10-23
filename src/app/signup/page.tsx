@@ -8,7 +8,10 @@ function SignupPage() {
   const [isShowPassword, setIsShowPassword] = useState<boolean>(false);
   const [isShowPasswordConfirm, setIsShowPasswordConfirm] =
     useState<boolean>(false);
-
+  const [email, setEmail] = useState<string>("");
+  const [nickname, setNickname] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   return (
     <div className="flex justify-center items-center">
       <div className="my-15 flex flex-col gap-2 border-2 border-primary-50 rounded-xl p-3 w-60">
@@ -17,14 +20,26 @@ function SignupPage() {
         </h1>
 
         <form className="flex justify-center flex-col gap-2">
-          <InputText text="EMAIL" placeholder="이메일을 입력해주세요" />
-          <InputText text="NICKNAME" placeholder="닉네임을 입력해주세요" />
+          <InputText
+            text="EMAIL"
+            placeholder="이메일을 입력해주세요"
+            value={email}
+            setValue={setEmail}
+          />
+          <InputText
+            text="NICKNAME"
+            placeholder="닉네임을 입력해주세요"
+            value={nickname}
+            setValue={setNickname}
+          />
           <InputText
             text="PASSWORD"
             isPassword={true}
             isShowPassword={isShowPassword}
             setIsShowPassword={setIsShowPassword}
             placeholder="비밀번호를 입력해주세요"
+            value={password}
+            setValue={setPassword}
           />
           <InputText
             text="PSSWORD CONFIRM"
@@ -32,6 +47,8 @@ function SignupPage() {
             isShowPassword={isShowPasswordConfirm}
             setIsShowPassword={setIsShowPasswordConfirm}
             placeholder="비밀번호를 다시 한번 입력해주세요"
+            value={passwordConfirm}
+            setValue={setPasswordConfirm}
           />
           <Button text="SIGNUP" />
         </form>
