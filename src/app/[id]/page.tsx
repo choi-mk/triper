@@ -7,9 +7,9 @@ import { TripType } from "@/types/TripType";
 import React, { useState } from "react";
 
 function TripDetailPage() {
-  const [isModal, setIsModal] = useState<boolean>(false);
+  const [isDeleteModal, setIsDeleteModal] = useState<boolean>(false);
   const onClickDelete = () => {
-    setIsModal(true);
+    setIsDeleteModal(true);
   };
   const trip: TripType = {
     id: "1",
@@ -51,10 +51,13 @@ function TripDetailPage() {
             img="/assets/images/img_review.png"
           />
         </div>
-        <Button text="Delete" width="w-20" onClick={onClickDelete} />
+        <div className="flex gap-3">
+          <Button text="EDIT" width="w-20" onClick={() => {}} isYes={false} />
+          <Button text="Delete" width="w-20" onClick={onClickDelete} />
+        </div>
       </div>
       <Toast text="여행이 삭제되었습니다" />
-      {isModal && <DeleteTripModal setIsModal={setIsModal} />}
+      {isDeleteModal && <DeleteTripModal setIsModal={setIsDeleteModal} />}
     </div>
   );
 }

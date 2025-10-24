@@ -2,7 +2,7 @@ import React from "react";
 
 interface ButtonType {
   text: string;
-  onClick?: () => void;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
   isYes?: boolean;
   width?: string;
 }

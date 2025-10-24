@@ -59,8 +59,9 @@ function Calendar({
     setArrivalDate("");
   };
 
-  const handleConfirmDate = () => {
+  const handleConfirmDate = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (departureDate !== "" && arrivalDate !== "") {
+      e?.stopPropagation();
       setIsModalOpen(false);
     }
   };
@@ -117,7 +118,7 @@ function Calendar({
           )
         )}
       </div>
-      <Button text="COMPLETE" onClick={handleConfirmDate} />
+      <Button text="COMPLETE" onClick={(e) => handleConfirmDate(e)} />
     </div>
   );
 }

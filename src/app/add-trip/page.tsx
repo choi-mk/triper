@@ -1,24 +1,23 @@
+"use client";
+import Button from "@/components/Button";
+import Calendar from "@/components/Callender";
+import InputText from "@/components/InputText";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import InputText from "./InputText";
-import Button from "./Button";
-import Calendar from "./Callender";
 
-interface AddTripModalType {
-  setIsModal: (value: boolean) => void;
-}
-
-function AddTripModal({ setIsModal }: AddTripModalType) {
+function AddNewTripPage() {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
   const [departureDate, setDepartureDate] = useState<string>("");
   const [arrivalDate, setArrivalDate] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [location, setLocation] = useState<string>("");
+  const router = useRouter();
 
   const onClickCancel = () => {
-    setIsModal(false);
+    router.push("/");
   };
   return (
-    <div className="fixed inset-0 bg-black/20 flex justify-center items-center">
+    <div className=" flex justify-center items-center">
       <div className="bg-white rounded-2xl p-3">
         <div className="flex flex-col gap-1">
           <InputText text="TITLE" value={title} setValue={setTitle} />
@@ -61,4 +60,4 @@ function AddTripModal({ setIsModal }: AddTripModalType) {
   );
 }
 
-export default AddTripModal;
+export default AddNewTripPage;

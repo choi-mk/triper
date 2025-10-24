@@ -1,19 +1,17 @@
 "use client";
 
-import AddTripModal from "@/components/AddTripModal";
 import Button from "@/components/Button";
 import TripCard from "@/components/TripCard";
 import { TripType } from "@/types/TripType";
-import Image from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const trips: TripType[] = [
     { id: "1", date: "2025-01-09", title: "일본 여행", location: "OSAKA" },
   ];
-  const [isModal, setIsModal] = useState<boolean>(false);
+  const router = useRouter();
   const onClickAdd = () => {
-    setIsModal(true);
+    router.push("/add-trip");
   };
   return (
     <div className="">
@@ -29,7 +27,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {isModal && <AddTripModal setIsModal={setIsModal} />}
     </div>
   );
 }
